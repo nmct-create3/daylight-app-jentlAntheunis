@@ -49,7 +49,7 @@ const placeSun = (sunrise, sunset, now) => {
 		}
 		sun.style.display = 'none';
 		document.querySelector('.js-time-left').innerHTML = '';
-		document.querySelector('.js-summary').innerHTML = 'The sun is down, tommorow it will rise again.';
+		document.querySelector('.js-time-text').innerHTML = 'The sun is down, tommorow it will rise again.';
 	}
 };
 
@@ -70,9 +70,8 @@ let showResult = (queryResponse) => {
 	//get current time
 	const now = new Date();
 	// Hier gaan we een functie oproepen die de zon een bepaalde positie kan geven en dit kan updaten.
-	placeSun(sunrise, sunset, now);
-
 	updateMinutesLeft(sunset, now);
+	placeSun(sunrise, sunset, now);
 	// Geef deze functie de periode tussen sunrise en sunset mee en het tijdstip van sunrise.
 };
 
