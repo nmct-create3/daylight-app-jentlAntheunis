@@ -22,26 +22,32 @@ const placeSun = (sunrise, sunset, now) => {
 	//calculate the percentage of the day that has passed
 	const totalMinutes = (sunset - sunrise) / 1000 / 60;
 	const minutesPassed = (now - sunrise) / 1000 / 60;
-	console.info(`${minutesPassed} minutes passed of ${totalMinutes} minutes`);
+	const sun = document.querySelector('.js-sun');
 	if (minutesPassed < totalMinutes && minutesPassed > 0) {
+		if (document.documentElement.classList.contains('is-night')) {
+			document.documentElement.classList.remove('is-night');
+			document.documentElement.classList.add('is-day');
+		}
 		const percentage = (minutesPassed / totalMinutes) * 100;
 
 		//map percentage to rotation between 0 and 180 degrees
 		const rotation = (180 * percentage) / 100;
 
 		//rotate sun element
-		const sun = document.querySelector('.js-sun');
 		sun.style.transform = `rotate(${rotation}deg)`;
 		if (sun.style.display === 'none') {
 			sun.style.display = null;
 		};
-		console.info('sun is up');
 
 		setInterval(e => {
 			updateSunPosition(sunrise, sunset);
 		}, 60000);
 	} else {
-		console.info('sun is down');
+		if (document.documentElement.classList.contains('is-day')) {
+			document.documentElement.classList.remove('is-day');
+			document.documentElement.classList.add('is-night');
+		}
+		sun.style.display = 'none';
 		document.querySelector('.js-time-left').innerHTML = '';
 		document.querySelector('.js-summary').innerHTML = 'The sun has is down, tommorow it will rise again.';
 	}
