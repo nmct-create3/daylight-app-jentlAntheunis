@@ -49,7 +49,7 @@ const placeSun = (sunrise, sunset, now) => {
 		}
 		sun.style.display = 'none';
 		document.querySelector('.js-time-left').innerHTML = '';
-		document.querySelector('.js-summary').innerHTML = 'The sun has is down, tommorow it will rise again.';
+		document.querySelector('.js-summary').innerHTML = 'The sun is down, tommorow it will rise again.';
 	}
 };
 
