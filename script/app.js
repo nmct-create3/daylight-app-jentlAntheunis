@@ -39,7 +39,7 @@ const placeSun = (sunrise, sunset, now) => {
 			sun.style.display = null;
 		};
 
-		setInterval(e => {
+		setInterval( () => {
 			updateSunPosition(sunrise, sunset);
 		}, 60000);
 	} else {
@@ -90,7 +90,7 @@ const updateMinutesLeft = (sunset, now) => {
 // 2 Aan de hand van een longitude en latitude gaan we de yahoo wheater API ophalen.
 let getAPI = async (lat, lon) => {
 	// Eerst bouwen we onze url op
-	const apiKey = 'cbfd1c6f2caa3d9e1ad4c2d8d03cc626';
+	const apiKey = API_KEY;
 	const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=nl&cnt=1`;
 	// Met de fetch API proberen we de data op te halen.
 	// Als dat gelukt is, gaan we naar onze showResult functie.
