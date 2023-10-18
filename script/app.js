@@ -77,8 +77,14 @@ let showResult = (queryResponse) => {
 
 const updateMinutesLeft = (sunset, now) => {
 	const minutesLeft = (sunset - now) / 1000 / 60;
-	const minutes = Math.floor(minutesLeft);
-	document.querySelector('.js-time-left').innerHTML = `${minutes} minutes`;
+	if(minutesLeft < 60) {
+		const minutes = Math.floor(minutesLeft);
+		document.querySelector('.js-time-left').innerHTML = `${minutes} minutes`;
+	} else {
+		const hours = Math.floor(minutesLeft / 60);
+		const minutes = Math.ceil(minutesLeft % 60);
+		document.querySelector('.js-time-left').innerHTML = `${hours} hrs and ${minutes} minutes`
+	}
 };
 
 // 2 Aan de hand van een longitude en latitude gaan we de yahoo wheater API ophalen.

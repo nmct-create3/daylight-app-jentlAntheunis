@@ -338,15 +338,17 @@ input::placeholder {
 }
 
 .c-sun__container {
-    transform: translateY(.6875rem);
-}
-
-.c-horizon__sun {
-    position: absolute;
-    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: center;
+    width: 100%;
+}
+
+.c-horizon__sun {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(50%);
 
     & .c-sun {
         transform-origin: 50% 50%;
